@@ -42,5 +42,17 @@ fun NavGraph() {
                 navController = navController
             )
         }
+        composable(
+            route = "stats/{carId}",
+            arguments = listOf(
+                navArgument("carId") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            val carId = backStackEntry.arguments?.getInt("carId") ?: 0
+            StatsScreen(
+                carId = carId,
+                navController = navController
+            )
+        }
     }
 }
