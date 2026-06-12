@@ -156,6 +156,44 @@ fun CarDetailScreen(
                 }
             }
 
+            item {
+                val avgMileage = if (fuelLogs.isNotEmpty()) {
+                    fuelLogs.map { it.mileage }.average()
+                } else null
+
+                avgMileage?.let {
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color(0xFF2A2A3E)
+                        )
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                        ) {
+                            Text(
+                                text = "🚀 Average Mileage",
+                                color = Color.White,
+                                fontSize = 14.sp
+                            )
+                            Text(
+                                text = "${String.format("%.2f", it)} km/L",
+                                color = Color(0xFFFFEB3B),
+                                fontSize = 28.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = "Based on ${fuelLogs.size} fuel logs",
+                                color = Color.LightGray,
+                                fontSize = 12.sp
+                            )
+                        }
+                    }
+                }
+            }
+
             // Fuel Logs Header
             item {
                 Text(
@@ -243,7 +281,7 @@ fun FuelLogCard(
                     color = Color.DarkGray
                 )
                 Text(
-                    text = "📍 ${fuelLog.odometer} km",
+                    text = "🚀 ${fuelLog.mileage} km/L",  // ← odometer hata, mileage add
                     fontSize = 13.sp,
                     color = Color.Gray
                 )

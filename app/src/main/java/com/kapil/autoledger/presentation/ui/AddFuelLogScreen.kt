@@ -29,7 +29,7 @@ fun AddFuelLogScreen(
 ) {
     var liters by remember { mutableStateOf("") }
     var pricePerLiter by remember { mutableStateOf("") }
-    var odometer by remember { mutableStateOf("") }
+    var mileage by remember { mutableStateOf("") }
     var notes by remember { mutableStateOf("") }
 
     Scaffold(
@@ -132,16 +132,16 @@ fun AddFuelLogScreen(
 
             // Odometer
             OutlinedTextField(
-                value = odometer,
-                onValueChange = { odometer = it },
-                label = { Text("Odometer Reading") },
-                placeholder = { Text("45230") },
+                value = mileage,
+                onValueChange = { mileage = it },
+                label = { Text("mileage") },
+                placeholder = { Text("14.5") },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number
+                    keyboardType = KeyboardType.Decimal
                 ),
                 modifier = Modifier.fillMaxWidth(),
-                suffix = { Text("km") }
+                suffix = { Text("km/L") }
             )
 
             // Notes
@@ -161,9 +161,9 @@ fun AddFuelLogScreen(
                 onClick = {
                     val litersVal = liters.toDoubleOrNull()
                     val priceVal = pricePerLiter.toDoubleOrNull()
-                    val odometerVal = odometer.toIntOrNull()
+                    val mileageVal = mileage.toDoubleOrNull()
 
-                    if (litersVal != null && priceVal != null && odometerVal != null) {
+                    if (litersVal != null && priceVal != null && mileageVal != null) {
                         viewModel.addFuelLog(
                             FuelLog(
                                 carId = carId,
@@ -171,7 +171,7 @@ fun AddFuelLogScreen(
                                 liters = litersVal,
                                 pricePerLiter = priceVal,
                                 totalCost = litersVal * priceVal,
-                                odometer = odometerVal,
+                                mileage = mileageVal,
                                 notes = notes
                             )
                         )

@@ -7,6 +7,6 @@ data class FuelLog(
     val liters: Double,
     val pricePerLiter: Double,
     val totalCost: Double,
-    val odometer: Int,
+    val mileage: Double,
     val notes: String = ""
 )

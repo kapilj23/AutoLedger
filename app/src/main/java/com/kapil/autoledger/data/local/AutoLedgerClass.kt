@@ -10,7 +10,7 @@ import com.kapil.autoledger.data.local.entity.FuelLogEntity
         CarEntity::class,
         FuelLogEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AutoLedgerDatabase : RoomDatabase() {

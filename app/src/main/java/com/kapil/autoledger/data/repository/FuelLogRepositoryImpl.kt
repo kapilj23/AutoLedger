@@ -39,7 +39,7 @@ fun FuelLogEntity.toDomain() = FuelLog(
     liters = liters,
     pricePerLiter = pricePerLiter,
     totalCost = totalCost,
-    odometer = odometer,
+    mileage = mileage,
     notes = notes
 )
 
@@ -50,6 +50,6 @@ fun FuelLog.toEntity() = FuelLogEntity(
     liters = liters,
     pricePerLiter = pricePerLiter,
     totalCost = totalCost,
-    odometer = odometer,
+    mileage = mileage,
     notes = notes
 )

@@ -23,6 +23,6 @@ data class FuelLogEntity(
     val liters: Double,       // kitna petrol dala
     val pricePerLiter: Double, // price per liter
     val totalCost: Double,    // liters * pricePerLiter
-    val odometer: Int,        // current km reading
+    val mileage: Double,        // current km reading
     val notes: String = ""    // optional notes
 )

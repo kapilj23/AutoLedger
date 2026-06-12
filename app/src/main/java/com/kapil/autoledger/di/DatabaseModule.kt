@@ -22,10 +22,11 @@ object DatabaseModule {
         @ApplicationContext context: Context
     ): AutoLedgerDatabase {
         return Room.databaseBuilder(
-            context,
-            AutoLedgerDatabase::class.java,
-            "autoledger_db"
-        ).build()
+                context,
+                AutoLedgerDatabase::class.java,
+                "autoledger_db"
+            ).fallbackToDestructiveMigration(false)
+            .build()
     }
 
     @Provides
