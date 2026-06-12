@@ -71,4 +71,6 @@ dependencies {
     ksp(libs.hilt.compiler)
 
     ksp(libs.hilt.compiler)
+    implementation(libs.navigation.compose)
+    implementation(libs.material.icons.extended)
 }
